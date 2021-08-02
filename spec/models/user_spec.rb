@@ -6,6 +6,16 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー登録' do
+
+  context 'ユーザ登録ができる時' do
+    it 'passwordが6文字以上であれば登録できること' do
+      @user.password = 'a12345'
+      @user.password_confirmation = 'a12345'
+      expect(@user).to be_valid
+    end
+  end
+
+  context 'ユーザ登録ができない時' do
     it 'nicknameが空では登録できない' do
       @user.nickname = ''
       @user.valid?
@@ -26,11 +36,6 @@ RSpec.describe User, type: :model do
       @user.password = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
-    end
-    it 'passwordが6文字以上であれば登録できること' do
-      @user.password = '123456'
-      @user.password_confirmation = '123456'
-      expect(@user).to be_valid
     end
     it 'passwordが5文字以下であれば登録できないこと' do
       @user.password = '12345'
@@ -68,5 +73,6 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Date of birth can't be blank")
     end
+  end
   end
 end

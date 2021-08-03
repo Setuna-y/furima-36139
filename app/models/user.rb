@@ -20,3 +20,5 @@ with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: '�
   validates :first_name_kana
 end
 
+has_many :items
+end

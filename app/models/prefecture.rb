@@ -1,4 +1,4 @@
-class Genre < ActiveHash::Base
+class Prefecture < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' }, { id: 2, name: '北海道' }, { id: 3, name: '青森県' },
     { id: 4, name: '岩手県' }, { id: 5, name: '宮城県' }, { id: 6, name: '秋田県' }, 
@@ -15,7 +15,7 @@ class Genre < ActiveHash::Base
     { id: 37, name: '徳島県' }, { id: 38, name: '香川県' }, { id: 39, name: '愛媛県' }, 
     { id: 40, name: '高知県' }, { id: 41, name: '福岡県' }, { id: 42, name: '佐賀県' }, 
     { id: 43, name: '長崎県' }, { id: 44, name: '熊本県' }, { id: 45, name: '大分県' }, 
-    { id: 46, name: '宮崎県' }, { id: 47, name: '鹿児島県' }, { id: 48, name: '沖縄県' }
+    { id: 46, name: '宮崎県' }, { id: 47, name: '鹿児島県' }, { id: 48, name: '沖縄県' },
 ]
 
 include ActiveHash::Associations

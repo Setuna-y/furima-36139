@@ -20,5 +20,9 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_until_shipping
 
-  validates :genre_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :shipping_fee_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :days_until_shipping_id, numericality: { other_than: 1 , message: "can't be blank"}
 end

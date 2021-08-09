@@ -114,7 +114,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが全角では出品できない' do
-        @item.price = ５５５
+        @item.price = '５５５'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
       end
@@ -135,6 +135,18 @@ RSpec.describe Item, type: :model do
         @item.price = 'a'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+
+      it 'priceが半角英数混合では出品できない' do
+        @item.price = '1a234'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+
+      it 'ユーザーが空では出品できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end

@@ -7,15 +7,14 @@ RSpec.describe Item, type: :model do
   end
 
   describe '出品機能' do
-    #正常系
+    # 正常系
     context '出品できる時' do
       it '全ての項目が存在すれば登録できる' do
         expect(@item).to be_valid
       end
     end
-      
 
-    #異常系
+    # 異常系
     context '出品できない時' do
       it '商品画像が空では出品できない' do
         @item.image = nil
@@ -104,43 +103,39 @@ RSpec.describe Item, type: :model do
       it 'priceが299円以下では出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
 
       it 'priceが10000000円以上では出品できない' do
-        @item.price = 10000001
+        @item.price = 10_000_001
         @item.valid?
 
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
 
       it 'priceが全角では出品できない' do
         @item.price = '５５５'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it 'priceが全角ひらがなでは出品できない' do
         @item.price = 'あ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it 'priceが全角カタカナでは出品できない' do
         @item.price = 'ア'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it 'priceが半角英字では出品できない' do
         @item.price = 'a'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
     end
   end
 end
-
-
-
-

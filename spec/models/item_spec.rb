@@ -41,7 +41,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーのidが1では出品できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
@@ -53,7 +53,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'condition_idが1では出品できない' do
-        @item.condition_id = '1'
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
@@ -65,7 +65,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'shipping_fee_idが1では出品できない' do
-        @item.shipping_fee_id = '1'
+        @item.shipping_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
       end
@@ -77,7 +77,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'prefecture_idが1では出品できない' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -89,7 +89,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'days_until_shipping_idが1では出品できない' do
-        @item.days_until_shipping_id = '1'
+        @item.days_until_shipping_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Days until shipping can't be blank")
       end
@@ -114,7 +114,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが全角では出品できない' do
-        @item.price = '５５５'
+        @item.price = ５５５
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
       end

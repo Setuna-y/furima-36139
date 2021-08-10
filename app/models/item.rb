@@ -17,11 +17,11 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_until_shipping
 
-with_options numericality: { other_than: 1, message: "can't be blank" } do
-  validates :category_id
-  validates :condition_id
-  validates :shipping_fee_id
-  validates :prefecture_id
-  validates :days_until_shipping_id
-end
+  with_options numericality: { other_than: 1, message: "can't be blank" } do
+    validates :category_id
+    validates :condition_id
+    validates :shipping_fee_id
+    validates :prefecture_id
+    validates :days_until_shipping_id
+  end
 end

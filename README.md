@@ -53,3 +53,4 @@ has_one : residence
 | purchase      | references | null: false, foreign_key: true |
 
 belongs_to :purchase
+

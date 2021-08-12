@@ -14,7 +14,12 @@ RSpec.describe PurchaseResidence, type: :model do
   describe '購入機能' do
     #正常系
     context '購入できる時' do
+      it '全ての存在すれば購入できる' do
+        expect(@residence).to be_valid
+      end
+
       it '建物名以外の項目が存在すれば購入できる' do
+        @residence.building_name = ''
         expect(@residence).to be_valid
       end
     end
@@ -94,13 +99,13 @@ RSpec.describe PurchaseResidence, type: :model do
       end
 
       it '電話番号が9桁以下では登録できない' do
-        @residence.phone_number = 000000000
+        @residence.phone_number = '000000000'
         @residence.valid?
         expect(@residence.errors.full_messages).to include("Phone number is invalid")
       end
 
-      it '電話番号が11桁以上では登録できない' do
-        @residence.phone_number = 00000000000
+      it '電話番号が12桁以上では登録できない' do
+        @residence.phone_number = '000000000000'
         @residence.valid?
         expect(@residence.errors.full_messages).to include("Phone number is invalid")
       end
@@ -139,6 +144,18 @@ RSpec.describe PurchaseResidence, type: :model do
         @residence.token = nil
         @residence.valid?
         expect(@residence.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'user_idが空では登録できないこと' do
+        @residence.user_id = nil
+        @residence.valid?
+        expect(@residence.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空では登録できないこと' do
+        @residence.item_id = nil
+        @residence.valid?
+        expect(@residence.errors.full_messages).to include("Item can't be blank")
       end
     end 
   end

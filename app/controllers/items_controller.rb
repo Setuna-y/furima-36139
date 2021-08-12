@@ -23,11 +23,7 @@ class ItemsController < ApplicationController
 
   def show; end
 
-  def edit
-    if @item.purchase != nil
-      redirect_to root_path
-    end
-  end
+  def edit; end
 
   def update
     if @item.update(item_params)
@@ -56,6 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def user_check
-    redirect_to root_path if @item.user != current_user
+    if @item.user != current_user || @item.purchase != nil
+      redirect_to root_path
   end
 end

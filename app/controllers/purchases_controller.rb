@@ -5,9 +5,7 @@ class PurchasesController < ApplicationController
 
 
   def index
-    else
-      @purchase_residence = PurchaseResidence.new
-    end
+    @purchase_residence = PurchaseResidence.new
   end
 
   def create

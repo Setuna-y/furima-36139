@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def user_check
-    redirect_to root_path if @item.user != current_user
+    if @item.user != current_user || @item.purchase != nil
+      redirect_to root_path
   end
 end
